@@ -36,12 +36,13 @@ void visit_node_and_children(visitor_data& data, ShaderNode const& node, F&& f) 
     // not execute then anyway
     for (auto out_pin_id : node.get_outputs()) {
         NodePin const& out_pin = graph.get_pin(out_pin_id);
-        // Only continue visiting it the output pin has a connection
+        // Only visit next child if the output pin has a connection
         if (out_pin.connection) {
             NodePin const& next_input = graph.get_pin(out_pin.connection);
             ShaderNode const& next_node = graph.get_node(next_input.owning_node);
 
-            // Check if all other input nodes have been evauluated already.
+            // Make sure all other input nodes to this node have been evaulated already 
+            // before processing it.
             if (!ready_to_advance(data, next_node, next_input)) {
                 continue;
             }

@@ -34,16 +34,16 @@ struct graph_printer {
 int main() {
     shader_nodes::ShaderGraph graph;
 
+    auto& end_node = graph.add_node();
+    auto& merge_node = graph.add_node();
     auto& begin_node = graph.add_node();
     begin_node.description = "Begin";
     begin_node.type = shader_nodes::nodes::input_value;
     auto& begin_node2 = graph.add_node();
     begin_node2.description = "Begin2";
-    begin_node2.type = shader_nodes::nodes::input_value;
-    auto& merge_node = graph.add_node();
+    begin_node2.type = shader_nodes::nodes::input_value;  
     merge_node.description = "Mulitplies two values";
     merge_node.type = shader_nodes::nodes::multiply;
-    auto& end_node = graph.add_node();
     end_node.description = "End";
     end_node.type = shader_nodes::nodes::output_value;
 
