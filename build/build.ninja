@@ -49,10 +49,34 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 build cmake_object_order_depends_target_ShaderNodes: phony || CMakeFiles/ShaderNodes.dir
 build CMakeFiles/ShaderNodes.dir/src/main.cpp.o: CXX_COMPILER__ShaderNodes ../src/main.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/main.cpp.o.d
-  FLAGS = -stdlib=libstdc++ -g   -Wall -Werror -std=c++17
+  FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g   -Wall -Werror -std=c++17
   INCLUDES = -I../include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
+build CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o: CXX_COMPILER__ShaderNodes ../src/ShaderGraph.cpp || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o.d
+  FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g   -Wall -Werror -std=c++17
+  INCLUDES = -I../include
+  OBJECT_DIR = CMakeFiles/ShaderNodes.dir
+  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
+build CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o: CXX_COMPILER__ShaderNodes ../src/GraphVisitor.cpp || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o.d
+  FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g   -Wall -Werror -std=c++17
+  INCLUDES = -I../include
+  OBJECT_DIR = CMakeFiles/ShaderNodes.dir
+  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
+build CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o: CXX_COMPILER__ShaderNodes ../src/NodePin.cpp || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o.d
+  FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g   -Wall -Werror -std=c++17
+  INCLUDES = -I../include
+  OBJECT_DIR = CMakeFiles/ShaderNodes.dir
+  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
+build CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o: CXX_COMPILER__ShaderNodes ../src/generators/GLSLGenerator.cpp || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o.d
+  FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g   -Wall -Werror -std=c++17
+  INCLUDES = -I../include
+  OBJECT_DIR = CMakeFiles/ShaderNodes.dir
+  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/generators
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ShaderNodes
@@ -61,8 +85,8 @@ build CMakeFiles/ShaderNodes.dir/src/main.cpp.o: CXX_COMPILER__ShaderNodes ../sr
 #############################################
 # Link the executable ShaderNodes
 
-build ShaderNodes: CXX_EXECUTABLE_LINKER__ShaderNodes CMakeFiles/ShaderNodes.dir/src/main.cpp.o
-  FLAGS = -stdlib=libstdc++ -g
+build ShaderNodes: CXX_EXECUTABLE_LINKER__ShaderNodes CMakeFiles/ShaderNodes.dir/src/main.cpp.o CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o
+  FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   POST_BUILD = :
   PRE_LINK = :
