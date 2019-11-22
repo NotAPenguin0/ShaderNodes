@@ -11,6 +11,12 @@ namespace nodes {
 inline const node_func constant = 0;
 inline const node_func multiply = 1;
 inline const node_func output_value = 2;
+// Writeable built-in variables like gl_Position.
+///A node with this function has input pins for these built-in variables.
+inline const node_func builtin_out = 3;
+// built in variables like gl_InstanceID.
+// A node with this function has output pins for these built-in variables.
+inline const node_func builtin_vars = 4;
 
 }
 

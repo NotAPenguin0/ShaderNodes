@@ -5,6 +5,8 @@
 
 #include "generators/GLSLFunctionGenerator.hpp"
 
+#include "mustache/mustache.hpp"
+
 #include <cassert>
 #include <sstream>
 #include <iostream> // debug
@@ -15,6 +17,7 @@ namespace {
 
 using namespace std::literals::string_literals;
 
+using namespace kainjow;
 
 // Generator is currently limited to one output pin per function.
 // This is because a glsl function cannot define multiple return values.
@@ -57,10 +60,12 @@ public:
     ShaderGraph const* graph;
     std::ostringstream writer;
 
+    std::vector<node_id> shader_outputs;
+
     // Assumes graph pointer has been set already
     void init() {
-        get_function_nodes();
-        create_functions();
+//        get_function_nodes();
+//        create_functions();
     }
 
     std::string get_variable_name(node_pin_id pid) {
@@ -94,6 +99,7 @@ public:
             
             char op_token = binary_op_token(node.func);
 
+            writer << "\t";
             writer << out_type << " " << out_name << " = ";
             writer << lhs_name << " " << op_token << " " << rhs_name << ";\n";
     }
@@ -156,8 +162,17 @@ public:
 
         std::string value_str = get_value_string(node);
 
+        writer << "\t";
         writer << var_type << " " << var_name << " = ";
         writer << var_type << "(" << value_str << ");\n";
+    }
+
+    void gen_builtin_output(NodePin const& pin) {
+        node_pin_id input_pid = pin.connection;
+        std::string input_name = get_variable_name(input_pid);
+
+        writer << "\t";
+        writer << pin.name << " = " << input_name << ";\n";
     }
 
     void operator()(ShaderNode const& node) {
@@ -166,11 +181,55 @@ public:
         } else if (is_binary_op(node.func)) { 
             gen_binary_op(node);
         } else if (node.func == nodes::output_value) {
+            shader_outputs.push_back(node.id);
             auto const& inputs = node.get_inputs();
             assert(inputs.size() == 1);
-            std::string input_name = get_variable_name(inputs[0]);
-            writer << "output: " << input_name << "\n";
+            NodePin const& pin = graph->get_pin(inputs[0]);
+            writer << "\t" << pin.name << " = "
+                   << get_variable_name(pin.connection) << ";\n";
+        } else if (node.func == nodes::builtin_vars) {
+            // no need to generate any code for this
+        } else if (node.func == nodes::builtin_out) {
+            auto const& inputs = node.get_inputs();
+            for (auto pid : inputs) {
+                gen_builtin_output(graph->get_pin(pid));
+            }
         }
+    }
+
+    void add_shader_out_data(mustache::data& data) {
+        data["OutVars"] = mustache::data::type::list;
+        for (auto out_id : shader_outputs) {
+            ShaderNode const& node = graph->get_node(out_id);
+            auto const& inputs = node.get_inputs();
+            NodePin const& pin = graph->get_pin(inputs[0]);
+            std::string decl = 
+                "\t"s + data_type_string(pin.data_type).data() + " "s + pin.name + ";";
+            data["OutVars"].push_back(mustache::data("Decl", decl));
+        }
+    }
+
+    std::string finalize() {
+        static const std::string mustache_base = 
+        "#version 330 core\n"
+        "layout(location = 0) in vec3 iPos;\n"
+        "out VS_OUT {\n"
+        "{{#OutVars}}"
+        "{{{Decl}}}"
+        "{{/OutVars}}\n"
+        "} vs_out;\n\n"
+        "void main() {\n"
+        "{{{Main}}}\n"
+        "}\n";
+
+        mustache::mustache must(mustache_base);
+        mustache::data data = mustache::data::type::object;
+        // write data for main
+        data["Main"] = writer.str();
+        
+        add_shader_out_data(data);
+
+        return must.render(data);
     }
 };
 
@@ -185,7 +244,7 @@ std::string GLSLGenerator::generate(ShaderGraph const& graph) {
 
     visit_graph(graph, generator);
 
-    return generator.writer.str();
+    return generator.finalize();
 }
 
 } // namespace shader_nodes

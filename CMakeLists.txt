@@ -46,4 +46,5 @@ add_executable(ShaderNodes
 
 target_include_directories(ShaderNodes PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/external"
 )
