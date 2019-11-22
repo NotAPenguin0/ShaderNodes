@@ -15,7 +15,7 @@ inline node_type output_value = 2;
 
 }
 
-class GLSLGenerator {
+class SPIRVGenerator {
 public:
     // Should no longer be std::string eventually
     std::string generate(ShaderGraph const& graph);

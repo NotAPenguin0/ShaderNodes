@@ -4,7 +4,7 @@
 
  #include "ShaderGraph.hpp"
  #include "GraphVisitor.hpp"
- #include "generators/GLSLGenerator.hpp"
+ #include "generators/SPIRVGenerator.hpp"
 
 std::ostream& operator<<(std::ostream& out, shader_nodes::ShaderNode const& node) {
 
@@ -64,6 +64,6 @@ int main() {
     shader_nodes::connect(begin2_out, merge_in2);
     shader_nodes::connect(merge_out, end_in);
 
-    shader_nodes::GLSLGenerator generator;
+    shader_nodes::SPIRVGenerator generator;
     std::cout << generator.generate(graph);
 }

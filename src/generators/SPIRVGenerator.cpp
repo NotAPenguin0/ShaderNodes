@@ -1,4 +1,4 @@
-#include "generators/GLSLGenerator.hpp"
+#include "generators/SPIRVGenerator.hpp"
 
 #include "GraphVisitor.hpp"
 #include "types.hpp"
@@ -16,13 +16,7 @@ struct generator {
     std::string result;
 
     void init() {
-        // initialize as vertex shader for now
-        result = 
-        "#version 330 core\n"
-        "layout(location = 0) in vec3 iPos;\n"
-        "void main() {\n"
-        "   gl_Position = vec4(iPos, 1.0);\n"
-        "}\n";
+        
     }
 
     std::string get_variable_name(node_pin_id pid) {
@@ -65,7 +59,7 @@ struct generator {
 
 }
 
-std::string GLSLGenerator::generate(ShaderGraph const& graph) {
+std::string SPIRVGenerator::generate(ShaderGraph const& graph) {
 
     generator generator;
     generator.graph = &graph;

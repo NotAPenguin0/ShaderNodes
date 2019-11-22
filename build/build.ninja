@@ -71,8 +71,8 @@ build CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o: CXX_COMPILER__ShaderNodes ..
   INCLUDES = -I../include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
-build CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o: CXX_COMPILER__ShaderNodes ../src/generators/GLSLGenerator.cpp || cmake_object_order_depends_target_ShaderNodes
-  DEP_FILE = CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o.d
+build CMakeFiles/ShaderNodes.dir/src/generators/SPIRVGenerator.cpp.o: CXX_COMPILER__ShaderNodes ../src/generators/SPIRVGenerator.cpp || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/src/generators/SPIRVGenerator.cpp.o.d
   FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g   -Wall -Werror -std=c++17
   INCLUDES = -I../include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
@@ -85,7 +85,7 @@ build CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o: CXX_COMPILE
 #############################################
 # Link the executable ShaderNodes
 
-build ShaderNodes: CXX_EXECUTABLE_LINKER__ShaderNodes CMakeFiles/ShaderNodes.dir/src/main.cpp.o CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o
+build ShaderNodes: CXX_EXECUTABLE_LINKER__ShaderNodes CMakeFiles/ShaderNodes.dir/src/main.cpp.o CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/SPIRVGenerator.cpp.o
   FLAGS = -stdlib=libstdc++ -D_GLIBCXX_DEBUG -g
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   POST_BUILD = :
