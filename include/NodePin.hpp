@@ -9,6 +9,7 @@
 namespace shader_nodes {
 
 enum class DataType {
+    Void,
     Float,
     Float2,
     Float3,

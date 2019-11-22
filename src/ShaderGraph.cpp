@@ -63,6 +63,65 @@ struct PinTag {};
 
 }
 
+ShaderGraph::ShaderGraph(ShaderGraph const& rhs) {
+    nodes.clear();
+    pins.clear();
+
+    for (auto const& [id, node] : rhs.nodes) {
+        // insert returns a pair<iterator, bool>
+        auto node_it = nodes.insert({id, node}).first;
+        ShaderNode& my_node = node_it->second;
+        my_node.graph = this;
+    }
+
+    pins = rhs.pins;
+}
+
+ShaderGraph::ShaderGraph(ShaderGraph&& rhs) {
+
+    nodes = std::move(rhs.nodes);
+    pins = std::move(rhs.pins);
+
+    for (auto& [id, node] : nodes) {
+        // set graph for moved nodes
+        node.graph = this;
+    }
+}
+
+ShaderGraph& ShaderGraph::operator=(ShaderGraph const& rhs) {
+
+    if (this != &rhs) {
+        nodes.clear();
+        pins.clear();
+
+        for (auto const& [id, node] : rhs.nodes) {
+            // insert returns a pair<iterator, bool>
+            auto node_it = nodes.insert({id, node}).first;
+            ShaderNode& my_node = node_it->second;
+            my_node.graph = this;
+        }
+
+        pins = rhs.pins;
+    }
+
+    return *this;
+}
+
+ShaderGraph& ShaderGraph::operator=(ShaderGraph&& rhs) {
+
+    if (this != &rhs) {
+        nodes = std::move(rhs.nodes);
+        pins = std::move(rhs.pins);
+
+        for (auto& [id, node] : nodes) {
+            // set graph for moved nodes
+            node.graph = this;
+        }
+    }
+
+    return *this;
+}
+
 ShaderNode& ShaderGraph::add_node() {
     node_id id = id_generator<node_id, NodeTag>::next();
     // Create a new node. This is abusing the fact that unordered_map's operator[] 

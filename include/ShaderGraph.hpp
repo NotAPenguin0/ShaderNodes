@@ -3,6 +3,7 @@
 
 #include "types.hpp"
 #include "NodePin.hpp"
+#include "NodeValue.hpp"
 
 #include <unordered_map>
 #include <vector>
@@ -14,9 +15,10 @@ class ShaderGraph;
 struct ShaderNode {
     std::string description;
 
-    node_type type;
-
+    node_func func;
     node_id id;
+
+    NodeValue value;
 
     NodePin& add_input_pin();
     NodePin& add_output_pin();
@@ -40,6 +42,15 @@ void connect(NodePin& first, NodePin& second);
 
 class ShaderGraph {
 public:
+    ShaderGraph() = default;
+    ShaderGraph(ShaderGraph const& rhs);
+    ShaderGraph(ShaderGraph&& rhs);
+
+    ShaderGraph& operator=(ShaderGraph const& rhs);
+    ShaderGraph& operator=(ShaderGraph&& rhs);
+
+    ~ShaderGraph() = default;
+
     ShaderNode& add_node();
 
     ShaderNode& get_node(node_id id);

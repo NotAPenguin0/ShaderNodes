@@ -12,6 +12,8 @@ std::string_view data_type_string(DataType type) {
             return "vec3";
         case DataType::Float4:
             return "vec4";
+        case DataType::Void:
+            return "void";
     }
 }
 

@@ -7,7 +7,6 @@
 
 namespace shader_nodes {
 
-
 // A node is a starting node if it has no inputs
 bool is_start_node(ShaderNode const& node);
 
