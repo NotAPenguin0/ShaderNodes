@@ -8,3 +8,6 @@
 [submodule "external/glfw"]
 	path = external/glfw
 	url = https://github.com/glfw/glfw
+[submodule "external/ImNodes"]
+	path = external/ImNodes
+	url = https://github.com/thedmd/imgui-node-editor
