@@ -35,16 +35,22 @@ else()
    endif()
 endif()
 
-# find_package(OpenGL REQUIRED COMPONENTS OpenGL)
+#find_package(OpenGL REQUIRED COMPONENTS OpenGL)
 
 add_subdirectory("src")
 add_subdirectory("include")
+add_subdirectory("external")
 
 add_executable(ShaderNodes 
     ${SHADER_NODES_SOURCES}
 )
 
 target_include_directories(ShaderNodes PUBLIC
+    ${SHADER_NODES_INCLUDE_DIRS}
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/external"
+)
+
+target_link_libraries(ShaderNodes 
+    ${SHADER_NODES_LINK_LIBRARIES}
 )
