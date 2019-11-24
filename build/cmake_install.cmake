@@ -41,6 +41,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/notapenguin/dev/ShaderNodes/build/src/cmake_install.cmake")
   include("/home/notapenguin/dev/ShaderNodes/build/include/cmake_install.cmake")
+  include("/home/notapenguin/dev/ShaderNodes/build/external/cmake_install.cmake")
 
 endif()
 

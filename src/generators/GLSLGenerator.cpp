@@ -185,16 +185,16 @@ public:
     }
 
     void operator()(ShaderNode const& node) {
-        if (node.func == nodes::constant) {
+        if (node.func == node_func::constant) {
             gen_constant_decl(node);
         } else if (is_binary_op(node.func)) { 
             gen_binary_op(node);
-        } else if (node.func == nodes::output_value) {
+        } else if (node.func == node_func::output_value) {
             gen_stage_output(node);
-        } else if (node.func == nodes::builtin_vars) {
+        } else if (node.func == node_func::builtin_vars) {
             // no need to generate any code for these, as they are
             // declared automatically
-        } else if (node.func == nodes::builtin_out) {
+        } else if (node.func == node_func::builtin_out) {
             // Write output
             auto const& inputs = node.get_inputs();
             for (auto pid : inputs) {

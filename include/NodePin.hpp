@@ -8,13 +8,6 @@
 
 namespace shader_nodes {
 
-enum class DataType {
-    Void,
-    Float,
-    Float2,
-    Float3,
-    Float4
-};
 
 std::string_view data_type_string(DataType type);
 

@@ -4,6 +4,8 @@
 #include "types.hpp"
 #include "NodePin.hpp"
 #include "NodeValue.hpp"
+#include "Nodes.hpp"
+#include "NodePresets.hpp"
 
 #include <unordered_map>
 #include <vector>
@@ -52,6 +54,7 @@ public:
     ~ShaderGraph() = default;
 
     ShaderNode& add_node();
+    ShaderNode& add_node(node_func const func);
 
     ShaderNode& get_node(node_id id);
     ShaderNode const& get_node(node_id id) const;

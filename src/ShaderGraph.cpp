@@ -132,6 +132,29 @@ ShaderNode& ShaderGraph::add_node() {
     return node;
 }
 
+ShaderNode& ShaderGraph::add_node(node_func func) {
+    auto& node = add_node();
+
+    // Obtain preset
+    auto const& preset = presets::presets[func];
+    // Set node data
+    node.description = preset.description;
+    node.func = func;
+    // Create input and output pins from preset
+    for (auto const& in : preset.in_pins) {
+        auto& pin = node.add_input_pin();
+        pin.data_type = in.data_type;
+        pin.name = in.name;
+    }
+    for (auto const& out : preset.out_pins) {
+        auto& pin = node.add_output_pin();
+        pin.data_type = out.data_type;
+        pin.name = out.name;
+    }
+
+    return node;
+}
+
 ShaderNode& ShaderGraph::get_node(node_id id) {
     return nodes.at(id);
 }

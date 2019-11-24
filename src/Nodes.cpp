@@ -13,10 +13,10 @@ bool is_function(node_func node_t) {
 
 bool is_binary_op(node_func node_t) {
     switch(node_t) {
-        case nodes::multiply:
-        case nodes::add:
-        case nodes::subtract:
-        case nodes::divide:
+        case node_func::multiply:
+        case node_func::add:
+        case node_func::subtract:
+        case node_func::divide:
             return true;
         default:
             return false;
@@ -26,13 +26,13 @@ bool is_binary_op(node_func node_t) {
 char binary_op_token(node_func op) {
     assert(is_binary_op(op));
     switch(op) {
-        case nodes::multiply:
+        case node_func::multiply:
             return '*';
-        case nodes::add:
+        case node_func::add:
             return '+';
-        case nodes::subtract:
+        case node_func::subtract:
             return '-';
-        case nodes::divide:
+        case node_func::divide:
             return '/';
         default:
             return ' ';
@@ -41,19 +41,19 @@ char binary_op_token(node_func op) {
 
 std::string_view node_func_string(node_func const node_t) {
     switch(node_t) {
-        case nodes::multiply:
+        case node_func::multiply:
             return "multiply";
-        case nodes::add:
+        case node_func::add:
             return "add";
-        case nodes::subtract:
+        case node_func::subtract:
             return "subtract";
-        case nodes::divide:
+        case node_func::divide:
             return "divide";
-        case nodes::constant:
+        case node_func::constant:
             return "constant";
-        case nodes::output_value:
+        case node_func::output_value:
             return "output";
-        case nodes::builtin_out:
+        case node_func::builtin_out:
             return "builtin_out";
         default:
             return "unknown_node_function";

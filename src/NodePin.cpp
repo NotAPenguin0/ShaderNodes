@@ -14,6 +14,8 @@ std::string_view data_type_string(DataType type) {
             return "vec4";
         case DataType::Void:
             return "void";
+        default:
+            return "unknown";
     }
 }
 

@@ -43,7 +43,7 @@ std::string function_prototype(ShaderNode const& function_node) {
     writer << data_type_string(ret_type) << " ";
     writer << node_func_string(type) << "(";
 
-    for (int i = 0; i < params.size(); ++i) {
+    for (size_t i = 0; i < params.size(); ++i) {
         FunctionParameter const& param = params[i];
         writer << data_type_string(param.type) << " ";
         writer << param.name;

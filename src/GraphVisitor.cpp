@@ -16,7 +16,7 @@ namespace detail {
 bool ready_to_advance(visitor_data& data, ShaderNode const& dest, NodePin const& cur_input) {
     auto const& inputs = dest.get_inputs();
     // do not check last node
-    for (int i = 0; i < inputs.size(); ++i) {
+    for (size_t i = 0; i < inputs.size(); ++i) {
         // if the pin we're checking is the current input pin, we can skip this
         if (inputs[i] == cur_input.id) { continue; }
 

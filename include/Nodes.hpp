@@ -6,23 +6,24 @@
 #include <string_view>
 
 namespace shader_nodes {
-namespace nodes {
+    
+enum class node_func {  
+    constant = 0,
+    output_value,
+    // Writeable built-in variables like gl_Position.
+    ///A node with this function has input pins for these built-in variables.
+    builtin_out,
+    // built in variables like gl_InstanceID.
+    // A node with this function has output pins for these built-in variables.
+    builtin_vars,
 
-inline constexpr node_func constant = 0;
-inline constexpr node_func output_value = 1;
-// Writeable built-in variables like gl_Position.
-///A node with this function has input pins for these built-in variables.
-inline constexpr node_func builtin_out = 2;
-// built in variables like gl_InstanceID.
-// A node with this function has output pins for these built-in variables.
-inline constexpr node_func builtin_vars = 3;
+    add,
+    subtract,
+    multiply,
+    divide,
 
-inline constexpr node_func add = 4;
-inline constexpr node_func subtract = 5;
-inline constexpr node_func multiply = 6;
-inline constexpr node_func divide = 7;
-
-}
+    MAX_NODES
+};
 
 bool is_function(node_func node_t);
 bool is_binary_op(node_func node_t);
