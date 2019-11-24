@@ -2,10 +2,14 @@
 #include <vector>
 #include <string>
 
- #include "ShaderGraph.hpp"
- #include "GraphVisitor.hpp"
- #include "generators/GLSLGenerator.hpp"
- #include "generators/FunctionImplDatabase.hpp"
+#include "ShaderGraph.hpp"
+#include "GraphVisitor.hpp"
+#include "GraphVerification.hpp"
+#include "generators/GLSLGenerator.hpp"
+#include "generators/FunctionImplDatabase.hpp"
+
+// #include <glad/glad.h>
+// #include <GLFW/glfw3.h>
 
 std::ostream& operator<<(std::ostream& out, shader_nodes::ShaderNode const& node) {
 
@@ -33,6 +37,17 @@ struct graph_printer {
 
 
 int main() {
+
+    // glfwInit();
+    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    // auto w = glfwCreateWindow(800, 600, "window", nullptr, nullptr);
+    // glfwMakeContextCurrent(w);
+    // for(;;) {
+    //     glfwPollEvents();
+    //     glfwSwapBuffers(w);
+    // }
+
     shader_nodes::initialize_function_impl_database();
     shader_nodes::ShaderGraph graph;
 
@@ -74,6 +89,7 @@ int main() {
     merge_out.name = "mult_result";
     auto& end_in = gl_position.add_input_pin();
     end_in.name = "gl_Position";
+    end_in.data_type = shader_nodes::DataType::Float4;
 
     auto& out_pin = out_node.add_input_pin();
     out_pin.name = "out_val";
@@ -86,6 +102,12 @@ int main() {
     shader_nodes::connect(begin2_out, merge_in2);
     shader_nodes::connect(merge_out, end_in);
     shader_nodes::connect(out_pin, const_pin);
+
+    verify_graph(graph, std::cout);
+
+    std::cout << "\n\n";
+    std::cout << "Generated GLSL:\n";
+    std::cout << "----------------------\n";
 
     shader_nodes::GLSLGenerator generator;
     std::cout << generator.generate(graph);

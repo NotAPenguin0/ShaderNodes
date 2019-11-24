@@ -175,21 +175,27 @@ public:
         writer << pin.name << " = " << input_name << ";\n";
     }
 
+    void gen_stage_output(ShaderNode const& node) {
+            shader_outputs.push_back(node.id);
+            auto const& inputs = node.get_inputs();
+            assert(inputs.size() == 1);
+            NodePin const& pin = graph->get_pin(inputs[0]);
+            writer << "\tvs_out." << pin.name << " = "
+                   << get_variable_name(pin.connection) << ";\n";
+    }
+
     void operator()(ShaderNode const& node) {
         if (node.func == nodes::constant) {
             gen_constant_decl(node);
         } else if (is_binary_op(node.func)) { 
             gen_binary_op(node);
         } else if (node.func == nodes::output_value) {
-            shader_outputs.push_back(node.id);
-            auto const& inputs = node.get_inputs();
-            assert(inputs.size() == 1);
-            NodePin const& pin = graph->get_pin(inputs[0]);
-            writer << "\t" << pin.name << " = "
-                   << get_variable_name(pin.connection) << ";\n";
+            gen_stage_output(node);
         } else if (node.func == nodes::builtin_vars) {
-            // no need to generate any code for this
+            // no need to generate any code for these, as they are
+            // declared automatically
         } else if (node.func == nodes::builtin_out) {
+            // Write output
             auto const& inputs = node.get_inputs();
             for (auto pid : inputs) {
                 gen_builtin_output(graph->get_pin(pid));
