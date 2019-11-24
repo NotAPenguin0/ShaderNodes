@@ -55,6 +55,8 @@ std::string_view node_func_string(node_func const node_t) {
             return "output";
         case node_func::builtin_out:
             return "builtin_out";
+        case node_func::builtin_vars:
+            return "builtin_vars";
         default:
             return "unknown_node_function";
     }

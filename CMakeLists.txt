@@ -5,7 +5,7 @@ enable_language(CXX)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 17)
 
-set(SHADER_NODES_COMPILE_FLAGS "-Wall -Werror")
+set(SHADER_NODES_COMPILE_FLAGS -Wall -Werror)
 set(SHADER_NODES_PREPROCESSOR_DEFINITIONS "")
 
 if (NOT CMAKE_BUILD_TYPE)
@@ -13,11 +13,6 @@ if (NOT CMAKE_BUILD_TYPE)
     message(STATUS "ShaderNodes: No build type specified. Using Release by default")
 endif(NOT CMAKE_BUILD_TYPE)
 
-# add compile flags and preprocessor definitions
-add_definitions(
-    ${SHADER_NODES_PREPROCESSOR_DEFINITIONS}
-    ${SHADER_NODES_COMPILE_FLAGS}
-)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/${DEBUG_OUTPUT_DIRECTORY}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/${DEBUG_OUTPUT_DIRECTORY}")
@@ -53,4 +48,13 @@ target_include_directories(ShaderNodes PUBLIC
 
 target_link_libraries(ShaderNodes 
     ${SHADER_NODES_LINK_LIBRARIES}
+)
+
+# add compile flags and preprocessor definitions
+target_compile_options(ShaderNodes PUBLIC
+    ${SHADER_NODES_COMPILE_FLAGS}
+)
+
+target_compile_definitions(ShaderNodes PUBLIC
+    ${SHADER_NODES_PREPROCESSOR_DEFINITIONS}
 )

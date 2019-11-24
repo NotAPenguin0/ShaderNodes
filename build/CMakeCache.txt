@@ -289,6 +289,12 @@ GLFW_USE_WAYLAND:BOOL=OFF
 //Assume the Vulkan loader is linked with the application
 GLFW_VULKAN_STATIC:BOOL=OFF
 
+//Value Computed by CMake
+ImGuiNodeEditor_BINARY_DIR:STATIC=/home/notapenguin/dev/ShaderNodes/build/external/ImNodes
+
+//Value Computed by CMake
+ImGuiNodeEditor_SOURCE_DIR:STATIC=/home/notapenguin/dev/ShaderNodes/external/ImNodes
+
 //Path to a library.
 MATH_LIBRARY:FILEPATH=/usr/lib64/libm.so
 
@@ -480,6 +486,18 @@ X11_xkbfile_INCLUDE_PATH:PATH=X11_xkbfile_INCLUDE_PATH-NOTFOUND
 
 //Path to a library.
 X11_xkbfile_LIB:FILEPATH=X11_xkbfile_LIB-NOTFOUND
+
+//The directory containing a CMake configuration file for glfw3.
+glfw3_DIR:PATH=glfw3_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for imgui.
+imgui_DIR:PATH=imgui_DIR-NOTFOUND
+
+//Value Computed by CMake
+imgui_node_editor_BINARY_DIR:STATIC=/home/notapenguin/dev/ShaderNodes/build/external/ImNodes/NodeEditor
+
+//Value Computed by CMake
+imgui_node_editor_SOURCE_DIR:STATIC=/home/notapenguin/dev/ShaderNodes/external/ImNodes/NodeEditor
 
 
 ########################
