@@ -41,6 +41,7 @@ private:
 };
 
 void connect(NodePin& first, NodePin& second);
+void disconnect(NodePin& first, NodePin& second);
 
 class ShaderGraph {
 public:

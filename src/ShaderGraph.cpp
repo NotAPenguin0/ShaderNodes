@@ -54,6 +54,11 @@ void connect(NodePin& first, NodePin& second) {
     second.connection = first.id;
 }
 
+void disconnect(NodePin& first, NodePin& second) {
+    first.connection = 0;
+    second.connection = 0;
+}
+
 // Implementation for class: ShaderGraph
 
 namespace {

@@ -11,7 +11,7 @@ void NodeList::show() {
     if (!shown) return;
 
     if (ImGui::Begin("Node List", &shown)) {
-
+        ImGui::Text("FPS: %f", ImGui::GetIO().Framerate);
         // Loop over all nodes
         constexpr size_t max_nodes = static_cast<size_t>(node_func::MAX_NODES);
         for (size_t i = 0; i < max_nodes; ++i) {

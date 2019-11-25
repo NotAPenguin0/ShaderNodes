@@ -39,7 +39,6 @@ int main() {
     shader_nodes::presets::init();
 
     shader_nodes::initialize_function_impl_database();
-    shader_nodes::ShaderGraph graph;
 
     shader_nodes::gui::init();
     shader_nodes::gui::Editor editor;

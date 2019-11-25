@@ -30,6 +30,8 @@ private:
     NodeList node_list;
     MenuBar menu_bar;
     NodeCanvas canvas;
+
+    ShaderGraph graph;
 };
 
 // Must be called before instantiating the Editor

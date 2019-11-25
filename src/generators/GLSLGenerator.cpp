@@ -81,6 +81,9 @@ public:
             NodePin const& lhs_input = graph->get_pin(inputs[0]);
             NodePin const& rhs_input = graph->get_pin(inputs[1]);
 
+            // Make sure this node has a connection 
+            if (!lhs_input.connection || !rhs_input.connection) { return; }
+
             // 2. Get output pins connecting to these inputs
             NodePin const& lhs = graph->get_pin(lhs_input.connection);
             NodePin const& rhs = graph->get_pin(rhs_input.connection);
