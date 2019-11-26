@@ -2,7 +2,7 @@ add_subdirectory(glfw)
 
 
 set(GLAD_GL_VERSION
-    430
+    330
 )
 
 set(SHADER_NODES_SOURCES
@@ -16,6 +16,8 @@ set(SHADER_NODES_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/imgui/imgui_impl_opengl3.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/imgui/imgui_widgets.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/imgui/imgui.cpp"
+    # compile stb sources
+    "${CMAKE_CURRENT_SOURCE_DIR}/stb_image_impl.cpp"
 
     PARENT_SCOPE
 )

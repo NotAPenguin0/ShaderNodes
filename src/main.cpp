@@ -10,29 +10,7 @@
 
 #include "gui/Editor.hpp"
 
-std::ostream& operator<<(std::ostream& out, shader_nodes::ShaderNode const& node) {
 
-    out << "Node description:\n" << node.description << "\n";
-    out << "Input pins:\n";
-    for(auto pin_id : node.get_inputs()) {
-        auto const& pin = node.get_graph().get_pin(pin_id);
-        out << pin.name << "\n";
-    }
-    out << "Output pins:\n";
-    for(auto pin_id : node.get_outputs()) {
-        auto const& pin = node.get_graph().get_pin(pin_id);
-        out << pin.name << "\n";
-    }
-
-    return out;
-}
-
-struct graph_printer {
-    shader_nodes::ShaderGraph const& graph;
-    void operator()(shader_nodes::ShaderNode const& node) {
-        std::cout << node << std::endl << std::endl;
-    }
-};
 
 
 int main() {

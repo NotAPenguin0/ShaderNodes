@@ -78,8 +78,9 @@ Editor::Editor() {
     glfwMakeContextCurrent(window);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-//        std::cout << "Failed to initialize GLAD\n";
-//        return;
+        std::cout << "Failed to initialize GLAD\n";
+        std::cout.flush();
+        return;
     }
 
     // Initialize imgui
@@ -98,6 +99,8 @@ Editor::Editor() {
     init_font();
 
     node_context = ed::CreateEditor();
+
+    canvas.init();
 
     make_dbg_graph(graph);
 }
@@ -153,25 +156,9 @@ void Editor::run() {
 void Editor::frame() {
     ed::SetCurrentEditor(node_context);
 
-    menu_bar.show();
+    menu_bar.show(graph);
     node_list.show();
     canvas.show(graph);
-
-    static bool last_pressed = false;
-    if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS
-        && !last_pressed) {
-        verify_graph(graph, std::cout);
-
-        std::cout << "\n\n";
-        std::cout << "Generated GLSL:\n";
-        std::cout << "----------------------\n";
-
-        shader_nodes::GLSLGenerator generator;
-        std::cout << generator.generate(graph);
-        last_pressed = true;
-    } else {
-        last_pressed = false;
-    }
 }
 
 void Editor::create_dockspace() {

@@ -82,7 +82,13 @@ public:
             NodePin const& rhs_input = graph->get_pin(inputs[1]);
 
             // Make sure this node has a connection 
-            if (!lhs_input.connection || !rhs_input.connection) { return; }
+            std::cout << lhs_input.connection << " " << rhs_input.connection;
+            std::cout.flush();
+            if (!lhs_input.connection || !rhs_input.connection) { 
+                std::cout << "exit early\n";
+                return; 
+            }
+
 
             // 2. Get output pins connecting to these inputs
             NodePin const& lhs = graph->get_pin(lhs_input.connection);
@@ -183,6 +189,7 @@ public:
             auto const& inputs = node.get_inputs();
             assert(inputs.size() == 1);
             NodePin const& pin = graph->get_pin(inputs[0]);
+
             writer << "\tvs_out." << pin.name << " = "
                    << get_variable_name(pin.connection) << ";\n";
     }

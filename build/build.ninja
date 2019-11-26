@@ -70,135 +70,141 @@ build cmake_object_order_depends_target_ShaderNodes: phony || cmake_object_order
 build CMakeFiles/ShaderNodes.dir/src/main.cpp.o: CXX_COMPILER__ShaderNodes ../src/main.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/main.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o: CXX_COMPILER__ShaderNodes ../src/ShaderGraph.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o: CXX_COMPILER__ShaderNodes ../src/GraphVisitor.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o: CXX_COMPILER__ShaderNodes ../src/NodePin.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/Nodes.cpp.o: CXX_COMPILER__ShaderNodes ../src/Nodes.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/Nodes.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/NodePresets.cpp.o: CXX_COMPILER__ShaderNodes ../src/NodePresets.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/NodePresets.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/GraphVerification.cpp.o: CXX_COMPILER__ShaderNodes ../src/GraphVerification.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/GraphVerification.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src
 build CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o: CXX_COMPILER__ShaderNodes ../src/generators/GLSLGenerator.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/generators
 build CMakeFiles/ShaderNodes.dir/src/generators/GLSLFunctionGenerator.cpp.o: CXX_COMPILER__ShaderNodes ../src/generators/GLSLFunctionGenerator.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/generators/GLSLFunctionGenerator.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/generators
 build CMakeFiles/ShaderNodes.dir/src/generators/FunctionImplDatabase.cpp.o: CXX_COMPILER__ShaderNodes ../src/generators/FunctionImplDatabase.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/generators/FunctionImplDatabase.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/generators
 build CMakeFiles/ShaderNodes.dir/src/gui/Editor.cpp.o: CXX_COMPILER__ShaderNodes ../src/gui/Editor.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/gui/Editor.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/gui
 build CMakeFiles/ShaderNodes.dir/src/gui/ImGuiStyle.cpp.o: CXX_COMPILER__ShaderNodes ../src/gui/ImGuiStyle.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/gui/ImGuiStyle.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/gui
 build CMakeFiles/ShaderNodes.dir/src/gui/NodeList.cpp.o: CXX_COMPILER__ShaderNodes ../src/gui/NodeList.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/gui/NodeList.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/gui
 build CMakeFiles/ShaderNodes.dir/src/gui/MenuBar.cpp.o: CXX_COMPILER__ShaderNodes ../src/gui/MenuBar.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/gui/MenuBar.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/gui
 build CMakeFiles/ShaderNodes.dir/src/gui/NodeCanvas.cpp.o: CXX_COMPILER__ShaderNodes ../src/gui/NodeCanvas.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/src/gui/NodeCanvas.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/src/gui
-build CMakeFiles/ShaderNodes.dir/external/glad430/src/glad.c.o: C_COMPILER__ShaderNodes ../external/glad430/src/glad.c || cmake_object_order_depends_target_ShaderNodes
-  DEP_FILE = CMakeFiles/ShaderNodes.dir/external/glad430/src/glad.c.o.d
+build CMakeFiles/ShaderNodes.dir/external/glad330/src/glad.c.o: C_COMPILER__ShaderNodes ../external/glad330/src/glad.c || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/external/glad330/src/glad.c.o.d
   FLAGS = -g   -Wall -Werror
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
-  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/glad430/src
+  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/glad330/src
 build CMakeFiles/ShaderNodes.dir/external/imgui/imgui_demo.cpp.o: CXX_COMPILER__ShaderNodes ../external/imgui/imgui_demo.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/external/imgui/imgui_demo.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/imgui
 build CMakeFiles/ShaderNodes.dir/external/imgui/imgui_draw.cpp.o: CXX_COMPILER__ShaderNodes ../external/imgui/imgui_draw.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/external/imgui/imgui_draw.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/imgui
 build CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_glfw.cpp.o: CXX_COMPILER__ShaderNodes ../external/imgui/imgui_impl_glfw.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_glfw.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/imgui
 build CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_opengl3.cpp.o: CXX_COMPILER__ShaderNodes ../external/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_opengl3.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/imgui
 build CMakeFiles/ShaderNodes.dir/external/imgui/imgui_widgets.cpp.o: CXX_COMPILER__ShaderNodes ../external/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/external/imgui/imgui_widgets.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/imgui
 build CMakeFiles/ShaderNodes.dir/external/imgui/imgui.cpp.o: CXX_COMPILER__ShaderNodes ../external/imgui/imgui.cpp || cmake_object_order_depends_target_ShaderNodes
   DEP_FILE = CMakeFiles/ShaderNodes.dir/external/imgui/imgui.cpp.o.d
   FLAGS = -g   -Wall -Werror -std=c++17
-  INCLUDES = -I../external/glad430/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
   OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external/imgui
+build CMakeFiles/ShaderNodes.dir/external/stb_image_impl.cpp.o: CXX_COMPILER__ShaderNodes ../external/stb_image_impl.cpp || cmake_object_order_depends_target_ShaderNodes
+  DEP_FILE = CMakeFiles/ShaderNodes.dir/external/stb_image_impl.cpp.o.d
+  FLAGS = -g   -Wall -Werror -std=c++17
+  INCLUDES = -I../external/glad330/include -I../external/ImNodes/NodeEditor/Include -I../include -I../external -I../external/glfw/include
+  OBJECT_DIR = CMakeFiles/ShaderNodes.dir
+  OBJECT_FILE_DIR = CMakeFiles/ShaderNodes.dir/external
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ShaderNodes
@@ -207,7 +213,7 @@ build CMakeFiles/ShaderNodes.dir/external/imgui/imgui.cpp.o: CXX_COMPILER__Shade
 #############################################
 # Link the executable ShaderNodes
 
-build ShaderNodes: CXX_EXECUTABLE_LINKER__ShaderNodes CMakeFiles/ShaderNodes.dir/src/main.cpp.o CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o CMakeFiles/ShaderNodes.dir/src/Nodes.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePresets.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVerification.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/GLSLFunctionGenerator.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/FunctionImplDatabase.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/Editor.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/ImGuiStyle.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/NodeList.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/MenuBar.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/NodeCanvas.cpp.o CMakeFiles/ShaderNodes.dir/external/glad430/src/glad.c.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_demo.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_draw.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_glfw.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_opengl3.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_widgets.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui.cpp.o | libglfw3.a libImNodes.a /usr/lib64/librt.so /usr/lib64/libm.so /usr/lib64/libX11.so || libImNodes.a libglfw3.a
+build ShaderNodes: CXX_EXECUTABLE_LINKER__ShaderNodes CMakeFiles/ShaderNodes.dir/src/main.cpp.o CMakeFiles/ShaderNodes.dir/src/ShaderGraph.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVisitor.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePin.cpp.o CMakeFiles/ShaderNodes.dir/src/Nodes.cpp.o CMakeFiles/ShaderNodes.dir/src/NodePresets.cpp.o CMakeFiles/ShaderNodes.dir/src/GraphVerification.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/GLSLGenerator.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/GLSLFunctionGenerator.cpp.o CMakeFiles/ShaderNodes.dir/src/generators/FunctionImplDatabase.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/Editor.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/ImGuiStyle.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/NodeList.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/MenuBar.cpp.o CMakeFiles/ShaderNodes.dir/src/gui/NodeCanvas.cpp.o CMakeFiles/ShaderNodes.dir/external/glad330/src/glad.c.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_demo.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_draw.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_glfw.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_impl_opengl3.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui_widgets.cpp.o CMakeFiles/ShaderNodes.dir/external/imgui/imgui.cpp.o CMakeFiles/ShaderNodes.dir/external/stb_image_impl.cpp.o | libglfw3.a libImNodes.a /usr/lib64/librt.so /usr/lib64/libm.so /usr/lib64/libX11.so || libImNodes.a libglfw3.a
   FLAGS = -g
   LINK_LIBRARIES = libglfw3.a -ldl libImNodes.a /usr/lib64/librt.so -lm -ldl /usr/lib64/libX11.so -lpthread
   OBJECT_DIR = CMakeFiles/ShaderNodes.dir
