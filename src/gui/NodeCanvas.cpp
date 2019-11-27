@@ -1,5 +1,7 @@
 #include "gui/NodeCanvas.hpp"
 
+#include "gui/NodeBuilder.hpp"
+
 #include <stb/stb_image.h>
 #include <imgui_node_editor.h>
 #include <glad/glad.h>
@@ -47,25 +49,6 @@ ImTextureID load_texture(const char* path) {
 
 namespace shader_nodes::gui {
 
-// Nodes have a NodeEditor id of their own ID, 
-// pins have a NodeEditor id of ID_MAX - their id.
-
-int node_to_gui_id(node_id id) {
-    return id;
-}
-
-int pin_to_gui_id(node_pin_id id) { 
-    return std::numeric_limits<int>::max() - id;
-}
-
-node_id node_from_gui_id(int id) {
-    return id;
-}
-
-node_pin_id pin_from_gui_id(int id) {
-    return std::numeric_limits<int>::max() - id;
-}
-
 void NodeCanvas::init() {
     node_header = load_texture("config/textures/header_background.png");
 }
@@ -87,29 +70,31 @@ void NodeCanvas::hide() {
     shown = false;
 }
 
-void NodeCanvas::show_nodes(ShaderGraph& graph) {   
-    for(auto const&[id, node] : graph.get_nodes()) {
-        int ed_id = node_to_gui_id(id);
-        ed::BeginNode(ed_id);
-            ImGui::Image(node_header, {50, 50}, {0, 0}, {1, 1}, {255, 0, 0, 255});
-            ImGui::Text("%s", node.description.c_str());
-            // input pins
-            for (auto pid : node.get_inputs()) {
-                ed::BeginPin(pin_to_gui_id(pid), ed::PinKind::Input);
-                    NodePin const& pin = graph.get_pin(pid);
-                    ImGui::Text("-> %s", pin.name.c_str());
-                ed::EndPin();
-            }
-            ImGui::SameLine();
-            // output pins
-            for (auto pid : node.get_outputs()) {
-                ed::BeginPin(pin_to_gui_id(pid), ed::PinKind::Output);
-                    NodePin const& pin = graph.get_pin(pid);
-                    ImGui::Text("%s ->", pin.name.c_str());
-                ed::EndPin();
-            }
+// static void draw_header(ed::NodeId id, ImVec4 color, ImTextureID texture) {
+   
+//     auto draw_list = ed::GetNodeBackgroundDrawList(id);
+//     auto half_border_w = ed::GetStyle().NodeBorderWidth * 0.5f;
+//     auto pos = ed::GetNodePosition(id);
+//     auto size = ed::GetNodeSize(id);
+//     auto uv = ImVec2(
+//         size.x / (float)(4.0f * 128),
+//         size.y / (float)(4.0f * 128));
+//     auto col = IM_COL32(color.x, color.y, color.z, color.w);
+//     draw_list->AddImageRounded(texture,
+//         ImVec2(pos.x - 8 + half_border_w, pos.y + size.y - 4 + half_border_w),
+//         ImVec2(pos.x + size.x + 8 - half_border_w, pos.y),
+//         ImVec2(0.0f, 0.0f), uv,
+//         col, ed::GetStyle().NodeRounding, 1 | 2);
+// }
 
-        ed::EndNode();
+
+void NodeCanvas::show_nodes(ShaderGraph& graph) {           
+    for(auto const&[id, node] : graph.get_nodes()) {
+        NodeBuilder builder(node);
+
+        // preferred API
+        // builder.section(NodeSection::Header, ...);
+        // builder.render();
     }
 
     // Submit links

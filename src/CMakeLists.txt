@@ -17,6 +17,7 @@ set(SHADER_NODES_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/ImGuiStyle.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/NodeList.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/MenuBar.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/gui/NodeBuilder.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/NodeCanvas.cpp"
 
     PARENT_SCOPE
