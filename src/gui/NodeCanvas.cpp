@@ -16,7 +16,12 @@ namespace {
     int next_link_id = 100000;
 }
 
-ImTextureID load_texture(const char* path) {
+struct TexLoadResult {
+    ImTextureID texture;
+    ImVec2 size;
+};
+
+TexLoadResult load_texture(const char* path) {
 
     GLuint texture_handle = 0;
 
@@ -28,7 +33,7 @@ ImTextureID load_texture(const char* path) {
     if (image_data == nullptr) {
         std::cout << "Failed to load image data";
         std::cout.flush();
-        return nullptr;
+        return {nullptr, {0, 0}};
     }
 
     glGenTextures(1, &texture_handle);
@@ -44,13 +49,15 @@ ImTextureID load_texture(const char* path) {
     // memory is now on the GPU, we don't need it here anymore
     stbi_image_free(image_data);
 
-    return reinterpret_cast<ImTextureID>(texture_handle);
+    return {reinterpret_cast<ImTextureID>(texture_handle), ImVec2(w, h)};
 }
 
 namespace shader_nodes::gui {
 
 void NodeCanvas::init() {
-    node_header = load_texture("config/textures/header_background.png");
+    auto tex_load_result = load_texture("config/textures/header_background.png");
+    node_header = tex_load_result.texture;
+    node_header_size = tex_load_result.size;
 }
 
 void NodeCanvas::show(ShaderGraph& graph) {
@@ -70,31 +77,16 @@ void NodeCanvas::hide() {
     shown = false;
 }
 
-// static void draw_header(ed::NodeId id, ImVec4 color, ImTextureID texture) {
-   
-//     auto draw_list = ed::GetNodeBackgroundDrawList(id);
-//     auto half_border_w = ed::GetStyle().NodeBorderWidth * 0.5f;
-//     auto pos = ed::GetNodePosition(id);
-//     auto size = ed::GetNodeSize(id);
-//     auto uv = ImVec2(
-//         size.x / (float)(4.0f * 128),
-//         size.y / (float)(4.0f * 128));
-//     auto col = IM_COL32(color.x, color.y, color.z, color.w);
-//     draw_list->AddImageRounded(texture,
-//         ImVec2(pos.x - 8 + half_border_w, pos.y + size.y - 4 + half_border_w),
-//         ImVec2(pos.x + size.x + 8 - half_border_w, pos.y),
-//         ImVec2(0.0f, 0.0f), uv,
-//         col, ed::GetStyle().NodeRounding, 1 | 2);
-// }
-
 
 void NodeCanvas::show_nodes(ShaderGraph& graph) {           
     for(auto const&[id, node] : graph.get_nodes()) {
         NodeBuilder builder(node);
 
-        // preferred API
-        // builder.section(NodeSection::Header, ...);
-        // builder.render();
+        builder.input_pins(node.get_inputs())
+               .output_pins(node.get_outputs())
+               .header({node_header, node_header_size}, 20, ImVec4(255, 255, 255, 255))
+               .title(node.description)
+               .render();
     }
 
     // Submit links

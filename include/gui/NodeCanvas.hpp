@@ -36,6 +36,7 @@ private:
     std::vector<LinkInfo> links;
 
     ImTextureID node_header;
+    ImVec2 node_header_size;
 
     void show_nodes(ShaderGraph& graph);
     void handle_editor_actions(ShaderGraph& graph);

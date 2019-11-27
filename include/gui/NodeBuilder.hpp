@@ -7,6 +7,7 @@
 #include <vector>
 #include <type_traits>
 #include <string>
+#include <string_view>
 
 #include <imgui/imgui.h>
 
@@ -50,22 +51,48 @@ enum class NodeSection {
     Bottom = 32
 };
 
+struct NodeDisplayData {
+    ImTextureID header_texture;
+    ImVec2 header_texture_size;
+    ImVec4 header_color;
+    float header_height;
+
+    std::string title_text;
+
+    std::vector<node_pin_id> input_pins;
+    std::vector<node_pin_id> output_pins;
+};
+
 }
+
+struct HeaderTexture {
+    ImTextureID texture;
+    ImVec2 size;
+};
 
 class NodeBuilder {
 public:
     NodeBuilder(ShaderNode const& node);
     ~NodeBuilder();
 
-    NodeBuilder& input_pins(std::vector<node_pin_id> const& pins);
+    NodeBuilder& header(HeaderTexture texture, float height, ImVec4 color = {255, 255, 255, 255});
+    NodeBuilder& title(std::string_view text);
+    NodeBuilder& input_pins(std::vector<node_pin_id> pins);
+    NodeBuilder& output_pins(std::vector<node_pin_id> pins);
 
     // Call when you want to submit the current node to ImGui
     void render();
+
 private:
     using mask_t = std::underlying_type_t<detail::NodeSection>;
     ShaderNode const& node;
-
+    ShaderGraph const& graph;
+    detail::NodeDisplayData display_data;
     mask_t set_sections = 0;
+
+    bool has_section(detail::NodeSection section) const;
+
+    void render_header();
 };
 
 }
