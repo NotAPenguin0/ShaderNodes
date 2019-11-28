@@ -38,8 +38,13 @@ private:
     ImTextureID node_header;
     ImVec2 node_header_size;
 
+    ImTextureID pin_tex;
+
+    float col[4] = {255, 255, 255, 255};
+
     void show_nodes(ShaderGraph& graph);
     void handle_editor_actions(ShaderGraph& graph);
+    void handle_drag_drop(ShaderGraph& graph);
 };
 
 }

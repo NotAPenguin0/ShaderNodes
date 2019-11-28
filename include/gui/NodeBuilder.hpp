@@ -61,6 +61,9 @@ struct NodeDisplayData {
 
     std::vector<node_pin_id> input_pins;
     std::vector<node_pin_id> output_pins;
+
+    ImTextureID input_pin_texture;
+    ImTextureID output_pin_texture;
 };
 
 }
@@ -77,8 +80,8 @@ public:
 
     NodeBuilder& header(HeaderTexture texture, float height, ImVec4 color = {255, 255, 255, 255});
     NodeBuilder& title(std::string_view text);
-    NodeBuilder& input_pins(std::vector<node_pin_id> pins);
-    NodeBuilder& output_pins(std::vector<node_pin_id> pins);
+    NodeBuilder& input_pins(std::vector<node_pin_id> pins, ImTextureID texture);
+    NodeBuilder& output_pins(std::vector<node_pin_id> pins, ImTextureID texture);
 
     // Call when you want to submit the current node to ImGui
     void render();

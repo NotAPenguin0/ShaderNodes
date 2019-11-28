@@ -10,6 +10,7 @@ void set_editor_style(Style style);
 void init_font();
 void clear_font();
 void push_font();
+void push_font_bold();
 
 }
 

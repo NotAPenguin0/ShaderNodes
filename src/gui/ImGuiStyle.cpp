@@ -7,6 +7,7 @@ namespace {
 
 Style active_style = Style::None;
 ImFont* editor_font = nullptr;
+ImFont* editor_bold = nullptr;
 
 void set_frame_rounding(float rounding) {
     ImGuiStyle& style = ImGui::GetStyle();
@@ -96,9 +97,12 @@ void init_font() {
     ImGuiIO& io = ImGui::GetIO();
     editor_font = io.Fonts->AddFontFromFileTTF(
         "config/fonts/editor_font.ttf", 15);
+    editor_bold = io.Fonts->AddFontFromFileTTF(
+        "config/fonts/editor_bold.ttf", 15);
 }
 
 void push_font() { ImGui::PushFont(editor_font); }
+void push_font_bold() {ImGui::PushFont(editor_bold); }
 
 void clear_font() { ImGui::PopFont(); }
 

@@ -4,11 +4,16 @@
 
 #include <stb/stb_image.h>
 #include <imgui_node_editor.h>
+#include <imgui/imgui_internal.h>
 #include <glad/glad.h>
 
 #include <limits>
 #include <algorithm>
 #include <iostream>
+
+namespace ImGui {
+    bool BeginDragDropTargetCustom(const ImRect& bb, ImGuiID id);
+}
 
 namespace ed = ax::NodeEditor;
 
@@ -58,12 +63,24 @@ void NodeCanvas::init() {
     auto tex_load_result = load_texture("config/textures/header_background.png");
     node_header = tex_load_result.texture;
     node_header_size = tex_load_result.size;
+
+    tex_load_result = load_texture("config/textures/circle_icon.png");
+    pin_tex = tex_load_result.texture;
 }
 
 void NodeCanvas::show(ShaderGraph& graph) {
     if (ImGui::Begin("Node Canvas", &shown)) {
 
+        if (ImGui::IsWindowHovered()) {
+            if (ImGui::IsMouseClicked(1)) {
+                
+            }
+        }
+
+        ImGui::ColorEdit4("header color", col);    
+
         ed::Begin("ShaderNode Editor");
+        handle_drag_drop(graph);
 
         show_nodes(graph);
 
@@ -78,13 +95,14 @@ void NodeCanvas::hide() {
 }
 
 
-void NodeCanvas::show_nodes(ShaderGraph& graph) {           
+void NodeCanvas::show_nodes(ShaderGraph& graph) { 
+    static ImVec4 header_red = ImVec4(218, 7, 7, 255);    
     for(auto const&[id, node] : graph.get_nodes()) {
         NodeBuilder builder(node);
 
-        builder.input_pins(node.get_inputs())
-               .output_pins(node.get_outputs())
-               .header({node_header, node_header_size}, 20, ImVec4(255, 255, 255, 255))
+        builder.input_pins(node.get_inputs(), pin_tex)
+               .output_pins(node.get_outputs(), pin_tex)
+               .header({node_header, node_header_size}, 20, header_red)
                .title(node.description)
                .render();
     }
@@ -151,4 +169,27 @@ void NodeCanvas::handle_editor_actions(ShaderGraph& graph) {
     ed::EndDelete();
 }
 
+
+void NodeCanvas::handle_drag_drop(ShaderGraph& graph) {
+    ImVec2 const size = ed::GetScreenSize();
+    // magical values that seem to make it work
+    ImVec2 pos = {-37, -32};
+    ImRect bounds;
+    bounds.Min = pos;
+    bounds.Max = {pos.x + size.x, pos.y + size.y};
+    if (ImGui::BeginDragDropTargetCustom(bounds, 1)) {
+           
+        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("p_new_node"); 
+            payload) {
+            
+            node_func const func = *reinterpret_cast<node_func*>(payload->Data);
+            ShaderNode const& node = graph.add_node(func);
+            auto const id = node_to_gui_id(node.id);
+            ed::SetNodePosition(id, ImGui::GetMousePos());
+            ImGui::EndDragDropTarget();
+
+        }
+    }
 }
+
+} // namespace shader_nodes::gui

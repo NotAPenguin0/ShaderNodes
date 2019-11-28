@@ -32,6 +32,13 @@ void NodeList::hide() {
 void NodeList::display_node_func(node_func func) { 
     std::string func_name = node_func_string(func).data();
     ImGui::Selectable(func_name.c_str());
+    if (ImGui::BeginDragDropSource()) {
+        ImGui::SetDragDropPayload(
+           "p_new_node", 
+           reinterpret_cast<void*>(&func), sizeof(func));
+        ImGui::Text("%s", func_name.c_str());
+        ImGui::EndDragDropSource();
+    }
 }
 
 }

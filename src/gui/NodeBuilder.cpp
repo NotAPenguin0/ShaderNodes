@@ -1,5 +1,7 @@
 #include "gui/NodeBuilder.hpp"
 
+#include "gui/ImGuiStyle.hpp"
+
 #include <imgui_node_editor.h>
 
 #include <cassert>
@@ -44,24 +46,26 @@ NodeBuilder& NodeBuilder::title(std::string_view text) {
     return *this;
 }
 
-NodeBuilder& NodeBuilder::input_pins(std::vector<node_pin_id> pins) {
+NodeBuilder& NodeBuilder::input_pins(std::vector<node_pin_id> pins, ImTextureID texture) {
     // Check mask and set it
     assert(!(set_sections & static_cast<mask_t>(NodeSection::Left)) 
             && "Input pins already set!");
     set_sections |= static_cast<mask_t>(NodeSection::Left);
     // Store pins
     display_data.input_pins = std::move(pins);
+    display_data.input_pin_texture = texture;
 
     return *this;
 }
 
-NodeBuilder& NodeBuilder::output_pins(std::vector<node_pin_id> pins) {
+NodeBuilder& NodeBuilder::output_pins(std::vector<node_pin_id> pins, ImTextureID texture) {
     // Check mask and set it
     assert(!(set_sections & static_cast<mask_t>(NodeSection::Right)) 
             && "Output pins already set!");
     set_sections |= static_cast<mask_t>(NodeSection::Right);
     // Store pins
     display_data.output_pins = std::move(pins);
+    display_data.output_pin_texture = texture;
 
     return *this;
 }
@@ -76,25 +80,37 @@ void ImGui_TextCentered(std::string_view text, ImVec2 container_size) {
 }
 
 void NodeBuilder::render() {
-    ed::NodeId const id = node_to_gui_id(node.id);
-    ImVec2 const node_size = ed::GetNodeSize(id);
+//    ed::NodeId const id = node_to_gui_id(node.id);
+//    ImVec2 const node_size = ed::GetNodeSize(id);
+
+    ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 4);
+
+    push_font_bold();
+    ImGui::Text("%s", display_data.title_text.c_str());
+    clear_font();
+
     // Dummy because the node editor library screws things up when we don't supply
     // any element before starting with input and output pins
     float spacing_before_body = 0;
     if (has_section(NodeSection::Top)) {
-        spacing_before_body += display_data.header_height - 5;
+        spacing_before_body += display_data.header_height - 10;
     }
-
     ImGui::Dummy({1, spacing_before_body});
-
-    ImGui_TextCentered(display_data.title_text, node_size);
+    
+    // push_font_bold();
+    // ImGui_TextCentered(display_data.title_text, node_size);
+    // clear_font();
 
     // Render input pins
     for (auto pid : display_data.input_pins) {
         NodePin const& pin = graph.get_pin(pid);
         
         ed::BeginPin(pin_to_gui_id(pid), ed::PinKind::Input);
-            ImGui::Text("-> %s", pin.name.c_str());
+            ed::PinPivotAlignment(ImVec2(0, 0.5f));
+            ed::PinPivotSize(ImVec2(0.0f, 0.0f));
+            ImGui::Image(display_data.input_pin_texture, ImVec2(16, 16));
+            ImGui::SameLine();
+            ImGui::Text("%s", pin.name.c_str());
         ed::EndPin();
     }
 
@@ -108,7 +124,11 @@ void NodeBuilder::render() {
         NodePin const& pin = graph.get_pin(pid);
         
         ed::BeginPin(pin_to_gui_id(pid), ed::PinKind::Output);
-            ImGui::Text("%s ->", pin.name.c_str());
+            ed::PinPivotAlignment(ImVec2(1.0f, 0.5f));
+            ed::PinPivotSize(ImVec2(0.0f, 0.0f));
+            ImGui::Text("%s", pin.name.c_str());
+            ImGui::SameLine();
+            ImGui::Image(display_data.output_pin_texture, ImVec2(16, 16));
         ed::EndPin();
     }
 
