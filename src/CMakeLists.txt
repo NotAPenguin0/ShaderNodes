@@ -13,6 +13,7 @@ set(SHADER_NODES_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/generators/GLSLFunctionGenerator.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/generators/FunctionImplDatabase.cpp"
 
+    "${CMAKE_CURRENT_SOURCE_DIR}/gui/AddNodePopup.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/Editor.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/ImGuiStyle.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gui/NodeList.cpp"

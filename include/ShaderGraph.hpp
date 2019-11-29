@@ -60,6 +60,8 @@ public:
     ShaderNode& get_node(node_id id);
     ShaderNode const& get_node(node_id id) const;
 
+    void delete_node(node_id id);
+
     NodePin& get_pin(node_pin_id id);
     NodePin const& get_pin(node_pin_id id) const;
 

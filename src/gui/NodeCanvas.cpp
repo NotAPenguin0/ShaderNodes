@@ -69,21 +69,18 @@ void NodeCanvas::init() {
 }
 
 void NodeCanvas::show(ShaderGraph& graph) {
+    (void)col;
+    
     if (ImGui::Begin("Node Canvas", &shown)) {
-
-        if (ImGui::IsWindowHovered()) {
-            if (ImGui::IsMouseClicked(1)) {
-                
-            }
-        }
-
-        ImGui::ColorEdit4("header color", col);    
-
-        ed::Begin("ShaderNode Editor");
+        node_to_add = std::nullopt;
         handle_drag_drop(graph);
-
-        show_nodes(graph);
-
+        ed::Begin("ShaderNode Editor");
+            if (node_to_add) {
+                ShaderNode const& node = graph.add_node(*node_to_add);
+                auto const id = node_to_gui_id(node.id);
+                ed::SetNodePosition(id, ImGui::GetMousePos());
+            }
+            show_nodes(graph);
         ed::End();
     }
 
@@ -163,7 +160,28 @@ void NodeCanvas::handle_editor_actions(ShaderGraph& graph) {
                     }
                 }
             }
-
+        }
+        ed::NodeId deleted_node_id;
+        while(ed::QueryDeletedNode(&deleted_node_id)) {
+            if (ed::AcceptDeletedItem()) {
+                ShaderNode& node = graph.get_node(node_from_gui_id((size_t)deleted_node_id));
+                // delete possibly related links
+                for (auto& link : links) {
+                    // grab required data
+                    auto& inputs = node.get_inputs();
+                    auto& outputs = node.get_outputs();
+                    auto in_id = pin_from_gui_id((size_t)link.input_id);
+                    auto out_id = pin_from_gui_id((size_t)link.output_id);
+                    // if the link is an element of this node's input list, or a member of this
+                    // link's output list, remove it
+                    if (std::find(inputs.begin(), inputs.end(), in_id) != inputs.end()
+                        || std::find(outputs.begin(), outputs.end(), out_id) != outputs.end()) {
+                            links.erase(std::remove(links.begin(), links.end(), link), 
+                                    links.end());
+                        }
+                }
+                graph.delete_node(node_from_gui_id((size_t)deleted_node_id));
+            }
         }
     }
     ed::EndDelete();
@@ -171,24 +189,21 @@ void NodeCanvas::handle_editor_actions(ShaderGraph& graph) {
 
 
 void NodeCanvas::handle_drag_drop(ShaderGraph& graph) {
-    ImVec2 const size = ed::GetScreenSize();
+    ImVec2 const size = ImGui::GetWindowSize();
     // magical values that seem to make it work
-    ImVec2 pos = {-37, -32};
+    ImVec2 const pos = ImGui::GetWindowPos();
+    const float offset = 8;
     ImRect bounds;
-    bounds.Min = pos;
-    bounds.Max = {pos.x + size.x, pos.y + size.y};
+    bounds.Min = {pos.x + offset, pos.y + offset};
+    bounds.Max = {pos.x + size.x - offset, pos.y + size.y - offset};
     if (ImGui::BeginDragDropTargetCustom(bounds, 1)) {
-           
         if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("p_new_node"); 
             payload) {
             
             node_func const func = *reinterpret_cast<node_func*>(payload->Data);
-            ShaderNode const& node = graph.add_node(func);
-            auto const id = node_to_gui_id(node.id);
-            ed::SetNodePosition(id, ImGui::GetMousePos());
-            ImGui::EndDragDropTarget();
-
+            node_to_add = func;
         }
+        ImGui::EndDragDropTarget();
     }
 }
 

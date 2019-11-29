@@ -168,6 +168,26 @@ ShaderNode const& ShaderGraph::get_node(node_id id) const {
     return nodes.at(id);
 }
 
+void ShaderGraph::delete_node(node_id id) {
+    ShaderNode& node = get_node(id);
+    // Remove connections for input and output pins
+    for(auto pid : node.get_inputs()) {
+        NodePin& first = get_pin(pid);
+        if (!first.connection) { continue; }
+        NodePin& second = get_pin(first.connection);
+        disconnect(first, second);
+    }
+
+    for(auto pid : node.get_outputs()) {
+        NodePin& first = get_pin(pid);
+        if (!first.connection) { continue; }
+        NodePin& second = get_pin(first.connection);
+        disconnect(first, second);
+    }
+    // erase node from list
+    nodes.erase(id);
+}
+
 NodePin& ShaderGraph::get_pin(node_pin_id id) {
     return pins.at(id);
 }

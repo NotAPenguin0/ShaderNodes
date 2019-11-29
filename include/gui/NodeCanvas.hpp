@@ -2,11 +2,14 @@
 #define SHADER_NODES_NODE_CANVAS_HPP_
 
 #include "ShaderGraph.hpp"
+#include "AddNodePopup.hpp"
 
 #include <vector>
 
 #include <imgui_node_editor.h>
 #include <imgui/imgui.h>
+
+#include <optional>
 
 namespace ed = ax::NodeEditor;
 
@@ -45,6 +48,10 @@ private:
     void show_nodes(ShaderGraph& graph);
     void handle_editor_actions(ShaderGraph& graph);
     void handle_drag_drop(ShaderGraph& graph);
+
+    AddNodePopup add_node_popup;
+
+    std::optional<node_func> node_to_add = std::nullopt;
 };
 
 }
