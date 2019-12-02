@@ -2,6 +2,6 @@
 
 (Credits to Martty)
 
-# oodles-or-noodles-for-doodles: the wrath of khan
+# oodles-of-noodles-for-doodles: the wrath of khan
 
 (Also credits to martty)
